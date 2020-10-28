@@ -1,0 +1,70 @@
+<html>
+<head>
+
+</head>
+<body>
+	<div style="float:left; margin-right:15px;">
+	<button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+	<button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button> current autoplay time set : 5s
+	<img class="mySlides" src="4.jpg" width="600" height="400">
+	<img class="mySlides" src="5.jpg" width="600" height="400">
+	<img class="mySlides" src="6.jpg" width="600" height="400">
+	<img class="mySlides" src="7.jpg" width="600" height="400">
+	</div>
+	<div id="container" style="margin: 0px auto; width: 500px; height: 375px; border: 12px #333 solid; float:left; margin-top:25px;">
+		<video autoplay="true" id="videoElement" style="width: 500px; height: 375px; background-color: #666; float:left;">
+	
+		</video>
+	</div>
+	<script language="javascript">
+		//reference : https://www.w3schools.com/w3css/w3css_slideshow.asp
+
+		var slideIndex = 1;
+		showDivs(slideIndex);
+
+		function plusDivs(n) {
+  			showDivs(slideIndex += n);
+		}
+
+		function showDivs(n) {
+  			var i;
+  			var x = document.getElementsByClassName("mySlides");
+  			if (n > x.length) {slideIndex = 1}
+  			if (n < 1) {slideIndex = x.length} ;
+  			for (i = 0; i < x.length; i++) {
+    			x[i].style.display = "none";
+  			}
+  			x[slideIndex-1].style.display = "block";
+		}
+
+		var slideIndex = 0;
+		carousel();
+
+		function carousel() {
+  			var i;
+  			var x = document.getElementsByClassName("mySlides");
+  			for (i = 0; i < x.length; i++) {
+    			x[i].style.display = "none";
+  			}
+  			slideIndex++;
+  			if (slideIndex > x.length) {slideIndex = 1}
+  			x[slideIndex-1].style.display = "block";
+  			setTimeout(carousel, 5000); // Change image every 5 seconds
+		}
+
+
+		//video , reference : https://www.kirupa.com/html5/accessing_your_webcam_in_html5.htm
+		var video = document.querySelector("#videoElement");
+
+		if (navigator.mediaDevices.getUserMedia) {
+  		navigator.mediaDevices.getUserMedia({ video: true })
+    	.then(function (stream) {
+      		video.srcObject = stream;
+    	})
+    	.catch(function (err0r) {
+      		console.log("Something went wrong!");
+    	});
+}
+	</script>
+</body>
+</html>
