@@ -22,10 +22,10 @@ function initImgMarkers() {
     $("#nft-marker1").attr("url", markersFolder + "/marker1");
     $("#nft-marker2").attr("url", markersFolder + "/marker2");
     $("#nft-marker3").attr("url", markersFolder + "/marker3");
-    $("#nft-marker3").attr("url", markersFolder + "/marker4");
-    $("#nft-marker3").attr("url", markersFolder + "/marker5");
-    $("#nft-marker3").attr("url", markersFolder + "/marker6");
-    $("#nft-marker3").attr("url", markersFolder + "/marker7");
+    $("#nft-marker4").attr("url", markersFolder + "/marker4");
+    $("#nft-marker5").attr("url", markersFolder + "/marker5");
+    $("#nft-marker6").attr("url", markersFolder + "/marker6");
+    $("#nft-marker7").attr("url", markersFolder + "/marker7");
 
     // Attach listeners to update the HUD info when a marker is detected or lost
     document.addEventListener("markerFound", (e) => {
