@@ -1,22 +1,65 @@
 <html>
 <head>
-
-	<link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- jQuery -->
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"
+        ></script>
+        <!-- AR.js and A-Frame -->
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        <!-- For the custom template -->
+        <link rel="stylesheet" href="ar_temp.css" />
+        <script src="utils.js"></script>
+        <script src="explore_img.js"></script>
+		<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div style="float:left; margin-right:15px;">
+	   <!-- A simple loader from the sample code-->
+        <div class="arjs-loader">
+            <div>Loading, please wait...</div>
+        </div>
+        <!-- HUD -->
+        <div class="hud normal" id="markerState">
+            Point the camera to a marker.
+        </div>
+
+	<div style="position: absolute; top: 20; left: 0; float:left; margin-right:15px;">
 	<button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
 	<button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button> current autoplay time set : 5s
-	<img class="mySlides" src="4.jpg" width="600" height="400">
-	<img class="mySlides" src="5.jpg" width="600" height="400">
-	<img class="mySlides" src="6.jpg" width="600" height="400">
-	<img class="mySlides" src="7.jpg" width="600" height="400">
+	<img class="mySlides" src="4.jpg" width="600" height="400" style="opacity:0.6;">
+	<img class="mySlides" src="5.jpg" width="600" height="400" style="opacity:0.6;">
+	<img class="mySlides" src="6.jpg" width="600" height="400" style="opacity:0.6;">
+	<img class="mySlides" src="7.jpg" width="600" height="400" style="opacity:0.6;">
 	</div>
-	<div id="container" style="margin: 0px auto; width: 523px; height: 399px; border: 12px #333 solid; float:left; margin-top:25px;">
-		<video autoplay="true" id="videoElement" style="margin: 0px ; width: 500px; height: 375px; background-color: #666; float:left;">
 	
-		</video>
-	</div>
+		<div id="nft-marker1-info" class="info-pane" >
+            <h1>Fill in some info about this location.</h1>
+        </div>
+        <div id="nft-marker2-info" class="info-pane">
+            <h1>Fill in some info about this location.</h1>
+        </div>
+        <div id="nft-marker3-info" class="info-pane">
+            <h1>Fill in some info about this location.</h1>
+        </div>
+
+        <!-- AR.js core -->
+        <a-scene embedded arjs="trackingMethod: best;" vr-mode-ui="enabled: false" init-img-markers>
+            
+            <!-- For Marker-based Tracking (url is set by JS due to a bug) -->
+            <a-nft type="nft" url="x" id="nft-marker1" data-info-pane="nft-marker1-info" data-marker-name="Old Main"></a-nft>
+            <a-nft type="nft" url="x" id="nft-marker2" data-info-pane="nft-marker2-info" data-marker-name="Hayden Library"></a-nft>
+            <a-nft type="nft" url="x" id="nft-marker3" data-info-pane="nft-marker3-info" data-marker-name="ASU Gammage"></a-nft>
+            <a-entity camera rotation-reader></a-entity> 
+
+        </a-scene>
+		<!--<video autoplay="true" id="videoElement" style="margin: 0px ; width: 500px; height: 375px; background-color: #666; float:left;">
+		</video>-->
+	
+
 	<script language="javascript">
 		//reference : https://www.w3schools.com/w3css/w3css_slideshow.asp
 
@@ -55,7 +98,7 @@
 
 
 		//video , reference : https://www.kirupa.com/html5/accessing_your_webcam_in_html5.htm
-		var video = document.querySelector("#videoElement");
+		/*var video = document.querySelector("#videoElement");
 
 		if (navigator.mediaDevices.getUserMedia) {
   		navigator.mediaDevices.getUserMedia({ video: true })
@@ -65,7 +108,8 @@
     	.catch(function (err0r) {
       		console.log("Something went wrong!");
     	});
-}
+		}*/
+
 	</script>
 </body>
 </html>
