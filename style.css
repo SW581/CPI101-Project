@@ -33,7 +33,7 @@ nav li {
 }
 nav a{
 	text-decoration: none;
-	color: white;
+	color: #f0cbbe;
 }
 main{
 	color: #1f1a18;
@@ -46,8 +46,24 @@ main p{
 	background-color: #f0cbbe;
 	padding: 10px;
 }
+form{
+	width: 30%;
+	padding: 5px;
+	display: grid;
+	grid-gap: 1em;
+	grid-template-rows: auto;
+	grid-template-columns: 5em 1fr;
+}
+footer{
+	color: #f0cbbe;
+	margin: auto;
+	width: 80%;
+	padding: 10px;
+}
+
 #content{
 	margin: auto;
 	width: 80%;
 	background-color: #f0cbbe;
+	padding: 10px;
 }

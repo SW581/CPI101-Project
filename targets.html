@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Pandemic Moves</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<nav>
+			<ul>
+					<li>
+						<a href="index.html">Home</a>
+					</li>
+					<li>
+						<a href="targets.html">Fitness Targets</a>
+					</li>
+          <li>
+            <a href="yogamove.html">Yoga Moves</a>
+          </li>
+			</ul>
+	</nav>
+	<header>
+		<h1><a href="index.html">Pandemic Moves</a></h1>
+	</header>
+
+	<main>
+		<h2>Fitness Targets</h2>
+		<div id="content">		
+    		<p>Please enter your data below, and matching fitness
+    		targets will be provided.</p>
+    		<form>
+    			<label for="age">Age: </label>
+    			<input type="text" name="age" id="age">
+    			<label for="gender">Gender: </label>
+    			<div>
+    				<input type="radio" name="gender" id="Man">Man
+    				<input type="radio" name="gender" id="Woman">Woman
+    			</div>
+    			<input type="button" value="Determine Targets" onclick= targets();>
+    		</form>
+
+    		<div id="results">
+    		</div>
+    	</div>
+	</main>
+	<footer>
+		<p>Information on fitness targets acquired from 
+			<a href="https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/fitness/art-20046433">Mayo Clinic</a>.</p>
+	</footer>
+	<script language="javascript">
+		function targets(){
+			var womenFitnessTargets = [
+				[-5],
+				[25, "98-166", 195, 13, 20, 39, 21.5],
+				[35, "93-157", 185, 13.5, 19, 30, 20.5],
+				[45, "88-149", 175, 14, 14, 25, 20],
+				[55, "83-140", 165, 16, 10, 21, 19],
+				[65, "78-132", 155, 17.5, 10, 12, 17.5],
+				[200]
+			];
+			var menFitnessTargets = [
+				[-5],
+				[25, "98-166", 195, 11, 28, 44, 19.5],
+				[35, "93-157", 185, 11.5, 21, 40, 18.5],
+				[45, "88-149", 175, 12, 16, 35, 17.5],
+				[55, "83-140", 165, 13, 12, 30, 16.5],
+				[65, "78-132", 155, 14, 10, 24, 15.5],
+				[200]
+			];
+			var userAge = document.getElementById('age').value;
+			var userGender = "";
+			var genderOptions = document.getElementsByName('gender');
+			for(i=0; i<genderOptions.length; i++)
+			{
+				if(genderOptions[i].checked){
+					 userGender = genderOptions[i].id;
+				}
+			}
+			if(userGender == "Woman")
+			{
+				for(i=1; i<(womenFitnessTargets.length - 1); i++)
+				{
+					if(userAge < (womenFitnessTargets[i+1][0] - 5) && userAge >= (womenFitnessTargets[i-1][0] + 5))
+					{
+						document.getElementById('results').innerHTML = "<h3>Results</h3>"
+							+ "<p>Closest Age for Targets: "
+							+ womenFitnessTargets[i][0] + " years</p>"
+							+ "<p>Target Heart Rate Zone: "
+							+ womenFitnessTargets[i][1] + " Beats per Minute during Aerobic Workout</p>"
+							+ "<p>Maximum Heart Rate: "
+							+ womenFitnessTargets[i][2] + " Beats per Minute during Aerobic Workout</p>"
+							+ "<p>Time to Complete a 1.5 mile run/jog: "
+							+ womenFitnessTargets[i][3] + " minutes</p>"
+							+ "<p>Pushup Count: "
+							+ womenFitnessTargets[i][4] + " until needing to rest</p>"
+							+ "<p>Situp Count: "
+							+ womenFitnessTargets[i][5] + " in one minute</p>"
+							+ "<p>Sit-and-reach Test*: "
+							+ womenFitnessTargets[i][6] + " inches</p>"
+							+ "<p>*For the Sit-and-reach Test, sit down and place the soles of your feet even with the 15 inch mark of a yardstick then reach forward as far as you can.</p>";
+					}
+				}
+			}
+			if(userGender == "Man")
+			{
+				for(i=1; i<(menFitnessTargets.length - 1); i++)
+				{
+					if(userAge < (menFitnessTargets[i+1][0] - 5) && userAge >= (menFitnessTargets[i-1][0] + 5))
+					{
+						document.getElementById('results').innerHTML = "<h3>Results</h3>"
+							+ "<p>Closest Age for Targets: "
+							+ menFitnessTargets[i][0] + " years</p>"
+							+ "<p>Target Heart Rate Zone: "
+							+ menFitnessTargets[i][1] + " Beats per Minute during Aerobic Workout</p>"
+							+ "<p>Maximum Heart Rate: "
+							+ menFitnessTargets[i][2] + " Beats per Minute during Aerobic Workout</p>"
+							+ "<p>Time to Complete a 1.5 mile run/jog: "
+							+ menFitnessTargets[i][3] + " minutes</p>"
+							+ "<p>Pushup Count: "
+							+ menFitnessTargets[i][4] + " until needing to rest</p>"
+							+ "<p>Situp Count: "
+							+ menFitnessTargets[i][5] + " in one minute</p>"
+							+ "<p>Sit-and-reach Test*: "
+							+ menFitnessTargets[i][6] + " inches</p>"
+							+ "<p>*For the Sit-and-reach Test, sit down and place the soles of your feet even with the 15 inch mark of a yardstick then reach forward as far as you can.</p>";
+					}
+				}
+			}
+		}
+	</script>
+</body>
+</html>
