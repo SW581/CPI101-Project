@@ -61,6 +61,13 @@ footer{
 	padding: 10px;
 }
 
+.mySlides{
+	 float:left;
+	 margin-right:20px;
+	 margin-top:20px;
+	 margin-left:20px;
+}
+
 #content{
 	margin: auto;
 	width: 80%;
